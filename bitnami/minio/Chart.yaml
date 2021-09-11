@@ -4,7 +4,8 @@ apiVersion: v2
 appVersion: 2021.9.3
 dependencies:
   - name: common
-    repository: https://charts.bitnami.com/bitnami
+    # repository: https://charts.bitnami.com/bitnami
+    repository: file://../common
     tags:
       - bitnami-common
     version: 1.x.x

@@ -62,7 +62,7 @@ extraDeploy: []
 image:
   registry: docker.io
   repository: bitnami/minio
-  tag: 2021.9.3-debian-10-r2
+  tag: 2021.6.17-debian-10-r15
   ## Specify a imagePullPolicy
   ## Defaults to 'Always' if image tag is 'latest', else set to 'IfNotPresent'
   ## ref: http://kubernetes.io/docs/user-guide/images/#pre-pulling-images
@@ -99,7 +99,7 @@ accessKey:
   ## @param accessKey.password MinIO&reg; Access Key. Ignored if existing secret is provided.
   ## ref: https://github.com/bitnami/bitnami-docker-minio/#setting-up-minio-in-distributed-mode
   ##
-  password: ""
+  password: "admin"
   ## @param accessKey.forcePassword Option to force users to specify a password. That is required for 'helm upgrade' to work properly.
   ## If it is not force, a random password will be generated.
   ##
@@ -108,7 +108,7 @@ secretKey:
   ## @param secretKey.password MinIO&reg; Secret Key. Ignored if existing secret is provided.
   ## ref: https://github.com/bitnami/bitnami-docker-minio/#setting-up-minio-in-distributed-mode
   ##
-  password: ""
+  password: "admin123"
   ## @param secretKey.forcePassword Option to force users to specify a password. That is required for 'helm upgrade' to work properly.
   ## If it is not force, a random password will be generated.
   ##
@@ -126,7 +126,7 @@ forceNewKeys: false
 ## e.g:
 ## defaultBuckets: "my-bucket, my-second-bucket"
 ##
-defaultBuckets: ""
+defaultBuckets: "learn"
 ## @param disableWebUI Disable MinIO&reg; Web UI
 ## ref: https://github.com/minio/minio/tree/master/docs/config/#browser
 ##
@@ -395,14 +395,15 @@ sidecars: []
 service:
   ## @param service.type MinIO&reg; service type
   ##
-  type: ClusterIP
+  #type: ClusterIP
+  type: NodePort
   ## @param service.port MinIO&reg; service port
   ##
   port: 9000
   ## @param service.nodePort Specify the nodePort value for the LoadBalancer and NodePort service types
   ## ref: https://kubernetes.io/docs/concepts/services-networking/service/#type-nodeport
   ##
-  nodePort: ""
+  nodePort: "30001"
   ## @param service.loadBalancerIP loadBalancerIP if service type is `LoadBalancer` (optional, cloud specific)
   ## ref: http://kubernetes.io/docs/user-guide/services/#type-loadbalancer
   ##
@@ -568,7 +569,7 @@ volumePermissions:
   image:
     registry: docker.io
     repository: bitnami/bitnami-shell
-    tag: 10-debian-10-r187
+    tag: 10-debian-10-r127
     pullPolicy: Always
     ## Optionally specify an array of imagePullSecrets.
     ## Secrets must be manually created in the namespace.
